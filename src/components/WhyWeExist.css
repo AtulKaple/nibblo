@@ -1,0 +1,560 @@
+/* ==========================================================================
+   SweetTape "Why We Exist" (Giant Pinning) Section Styles
+   ========================================================================== */
+
+:root {
+  --curve-depth: 10.336vw;
+  --section-bite: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1456 150.5' preserveAspectRatio='none'%3E%3Cpath d='M0 0C212.833 113.333 801.9 272 1456 0L1456 150.5L0 150.5Z' fill='%23000'/%3E%3C/svg%3E");
+  --section-curve: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1456 150.5' preserveAspectRatio='none'%3E%3Cpath d='M1456 0C801.9 272 212.833 113.333 0 0Z' fill='%23000'/%3E%3C/svg%3E");
+  --font-note: "Nothing You Could Do", cursive, sans-serif;
+  --font-sweet-heading: var(
+    --f-title,
+    "Archivo",
+    "Arial Black",
+    system-ui,
+    sans-serif
+  );
+  --note-fs: 0.9722vw;
+  --note-lh: 1.0417vw;
+  --note-indent-x: 1.2vw;
+  --note-indent-y: 0.9vw;
+  --note-bow: 0.486vw;
+  --note-lead-x: 1.667vw;
+  --note-lead-y: 1.319vw;
+  --note-tail: 1.25vw;
+  --note-rule: max(1.2px, 0.087vw);
+  --note-stroke: 0.02em;
+}
+
+@property --peel {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 0;
+}
+
+.giant-pinning {
+  --giant-bg: var(--creme, #efefe3);
+  --giant-ink: var(--rouge, #622b14);
+  --giant-size: 26vw;
+  --giant-open-gx: 1vw;
+  --giant-inset: 0.045;
+  --giant-open-at: 0.4;
+  --giant-tail: 18vw;
+  --giant-arc: var(--curve-depth);
+  --giant-sheet: calc(100vh + var(--giant-arc));
+  --drop-blur: 0.02vw;
+  --drop-ink: #622b1430;
+
+  z-index: 15;
+  margin-top: calc(var(--giant-arc) * -1);
+  padding-top: var(--giant-arc);
+  padding-bottom: var(--giant-tail);
+  background-color: transparent;
+  background-image: linear-gradient(var(--giant-bg) 0 0);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 100% calc(100% - var(--giant-arc) + 1px);
+  position: relative;
+  overflow: hidden;
+  color: var(--giant-ink);
+  font-family: var(--font-sweet-heading);
+}
+
+.giant-brow {
+  height: var(--giant-arc);
+  background: var(--giant-bg);
+  -webkit-mask-image: var(--section-bite);
+  mask-image: var(--section-bite);
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.giant-brow:before {
+  content: "";
+  background: url(/sweet-tape-assets/paper-overlay.webp);
+  background-size: 100% var(--giant-sheet);
+  opacity: 0.2;
+  pointer-events: none;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  position: absolute;
+  inset: 0;
+}
+
+.giant-pinning .wrapper {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.giant-pinning .wrapper:before {
+  content: "";
+  background: url(/sweet-tape-assets/paper-overlay.webp);
+  background-size: 100% var(--giant-sheet);
+  opacity: 0.2;
+  pointer-events: none;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.giant-pinning:after {
+  content: "";
+  height: var(--giant-tail);
+  background: url(/sweet-tape-assets/paper-overlay.webp);
+  background-size: 100vw var(--giant-sheet);
+  opacity: 0.2;
+  pointer-events: none;
+  background-repeat: repeat;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 0;
+}
+
+.giant-canvas {
+  will-change: transform;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.giant-canvas > * {
+  left: var(--gx);
+  top: var(--gy);
+  position: absolute;
+}
+
+/* ---------- Top Title ---------- */
+.giant-pinning .top-title {
+  --gx: 0vw;
+  --gy: 20vw;
+  text-align: center;
+  z-index: 5;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5vw;
+}
+
+.giant-pinning .subhead {
+  display: inline-block;
+  padding: 0.4em 1.2em;
+  background-color: var(--rouge, #622b14);
+  color: var(--creme, #efefe3);
+  border-radius: 9999px;
+  font-family: var(--font-sweet-heading);
+  font-size: clamp(11px, 0.95vw, 15px);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transform: rotate(-2deg);
+  width: fit-content;
+  margin-inline: auto;
+  box-shadow: 0 4px 12px rgba(178, 18, 54, 0.25);
+}
+
+.giant-pinning .h2 {
+  font-family: var(--font-sweet-heading);
+  letter-spacing: -0.02em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  font-size: clamp(24px, 3.8vw, 54px);
+  font-weight: 900;
+  line-height: 0.98;
+  color: var(--giant-ink);
+  text-transform: uppercase;
+}
+
+.giant-pinning .h2 .line {
+  display: flex;
+  justify-content: center;
+}
+
+/* Character reveal clips */
+.giant-pinning .clip {
+  flex: none;
+  display: inline-block;
+  vertical-align: top;
+  margin: -0.1em -0.01em 0;
+  padding: 0.1em 0.01em 0;
+  overflow: hidden;
+}
+
+.giant-pinning .char {
+  display: inline-block;
+  will-change: transform;
+  color: var(--giant-ink);
+}
+
+.giant-pinning[data-reveal="live"] .char {
+  transform: none;
+}
+
+/* ---------- Rows (TO CREATE, TO FIX, TO PROTECT) ---------- */
+.giant-row {
+  width: max-content;
+  color: var(--giant-ink);
+  display: flex;
+  align-items: center;
+}
+
+.giant-row.down-to-horizontal {
+  --gx: 8vw;
+  --gy: 52vw;
+}
+
+.giant-row.diagdown-to-horizontal {
+  --gx: 190vw;
+  --gy: 105vw;
+}
+
+.giant-row.diagup-to-horizontal {
+  --gx: 395vw;
+  --gy: 65vw;
+}
+
+.giant-row .giant {
+  font-family: var(--font-sweet-heading);
+  font-size: var(--giant-size);
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  z-index: 2;
+  align-items: center;
+  margin: 0;
+  font-weight: 900;
+  line-height: 1;
+  display: flex;
+  position: relative;
+  text-transform: uppercase;
+}
+
+.giant-row .giant-index {
+  pointer-events: none;
+  flex: none;
+  align-self: center;
+  width: auto;
+  max-width: none;
+  height: 0.16em;
+  margin: 0 0.12em 0 0;
+  filter: invert(15%) sepia(85%) saturate(3000%) hue-rotate(330deg)
+    brightness(80%) contrast(105%);
+}
+
+.giant-slot {
+  --giant-slot: 0.62em;
+  width: var(--giant-slot);
+  z-index: 3;
+  rotate: var(--giant-tilt, 0deg);
+  translate: calc(var(--giant-dx, 0em) + var(--pdx, 0px)) var(--giant-dy, 0em);
+  will-change: transform;
+  flex: none;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  margin: 0 0.14em;
+}
+
+.giant-card {
+  aspect-ratio: 1;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  box-shadow: 0 12px 30px rgba(178, 18, 54, 0.22);
+  border-radius: 0.14em;
+  display: block;
+}
+
+/* Props & Floating Stickers */
+.giant-prop {
+  left: var(--px);
+  top: var(--py);
+  width: calc(var(--pw) * var(--gp-scale, 1));
+  height: auto;
+  rotate: calc(var(--pr) + var(--prot, 0deg));
+  z-index: var(--pz, 1);
+  translate: var(--pdx, 0px);
+  will-change: transform;
+  filter: drop-shadow(0.35vw 0.5vw 0.5vw rgba(0, 0, 0, 0.22));
+  pointer-events: none;
+  user-select: none;
+  position: absolute;
+}
+
+.giant-prop--shot {
+  font-size: calc(var(--pw) * var(--gp-scale, 1) * 1.6815);
+  border-radius: 0.14em;
+  display: block;
+}
+
+.giant-prop--shot > img {
+  border-radius: inherit;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.giant-prop--tag {
+  border-radius: 0.1em;
+}
+
+/* Tape Peel Animation Component */
+.peel {
+  rotate: var(--peel-dir, 0deg);
+  --peel-bleed: 0.6vw;
+  --peel-w: 0px;
+  --peel-h: 0px;
+  --peel-span: calc(
+    var(--peel-w) *
+      max(sin(var(--peel-dir, 0deg)), -1 * sin(var(--peel-dir, 0deg))) +
+      var(--peel-h) *
+      max(cos(var(--peel-dir, 0deg)), -1 * cos(var(--peel-dir, 0deg)))
+  );
+  --peel-pad: calc(
+    var(--peel-bleed) + max(0px, calc((var(--peel-span) - var(--peel-h)) / 2))
+  );
+  --peel-shut: calc(-1 * var(--peel-pad));
+  --peel-far: calc(100% + var(--peel-pad));
+  --peel-edge: calc(50% - var(--peel-span) / 2);
+  --peel-from: var(--peel-shut);
+  --peel-to: 32%;
+  --peel-cut: calc(
+    var(--peel-from) + var(--peel, 0) * (var(--peel-to) - var(--peel-from))
+  );
+  display: block;
+  position: relative;
+}
+
+.giant-slot .giant-tape,
+.giant-prop--shot .giant-tape {
+  --peel: 1;
+  z-index: 5;
+  width: 0.48em;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  translate: -50% -46%;
+}
+
+.peel-face {
+  height: 100%;
+  clip-path: polygon(
+    var(--peel-shut) var(--peel-cut),
+    var(--peel-far) var(--peel-cut),
+    var(--peel-far) var(--peel-far),
+    var(--peel-shut) var(--peel-far)
+  );
+  display: block;
+}
+
+.peel-flap {
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: calc(-100% + 2 * var(--peel-cut) - 1px);
+  clip-path: polygon(
+    var(--peel-shut) var(--peel-shut),
+    var(--peel-far) var(--peel-shut),
+    var(--peel-far) var(--peel-cut),
+    var(--peel-shut) var(--peel-cut)
+  );
+  position: absolute;
+  transform: scaleY(-1);
+}
+
+.peel-turn {
+  height: 100%;
+  rotate: calc(-1 * var(--peel-dir, 0deg));
+  display: block;
+}
+
+.peel img {
+  object-fit: cover;
+  user-select: none;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.peel-flap img {
+  filter: var(--peel-back, url(#peel-back))
+    brightness(calc(1 + var(--peel, 0) * 0.22));
+}
+
+/* Diagonal Connecting Arrows */
+.diag-down-arrow,
+.diag-up-arrow {
+  width: 26vw;
+  height: 17.33vw;
+  color: var(--giant-ink);
+  opacity: 0.8;
+  pointer-events: none;
+}
+
+.diag-down-arrow svg,
+.diag-up-arrow svg {
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.diag-down-arrow path,
+.diag-up-arrow path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.diag-down-arrow {
+  --gx: 184vw;
+  --gy: 77vw;
+}
+
+.diag-up-arrow {
+  --gx: 378vw;
+  --gy: 80vw;
+}
+
+/* Hand Written Notes */
+.hand-note {
+  --hand-w: 25vw;
+  --hand-ink: var(--brun, #60150d);
+  width: var(--hand-w);
+  pointer-events: none;
+  position: absolute;
+}
+
+.giant-note {
+  --hand-w: 16vw;
+  --hand-ink: var(--brun, #60150d);
+  will-change: transform, opacity;
+  left: var(--px);
+  top: var(--py);
+  z-index: 4;
+}
+
+.hand-note .hand-ink {
+  display: inline-block;
+  padding: 12px 14px 10px 18px;
+  font-family: var(--font-note), cursive;
+  font-weight: 400;
+  font-size: clamp(14px, 1.1vw, 21px);
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-transform: lowercase;
+  white-space: nowrap;
+  text-align: left;
+  color: var(--hand-ink);
+  position: relative;
+  transform: rotate(-6deg);
+}
+
+.hand-note .hand-line {
+  display: block;
+}
+
+.hand-note .hand-word {
+  display: inline-block;
+  opacity: 1;
+  clip-path: inset(0 100% 0 0);
+  will-change: clip-path;
+  margin-right: 0.28em;
+}
+
+.hand-note .hand-word:last-child {
+  margin-right: 0;
+}
+
+.hand-note .hand-rule path {
+  fill: none;
+  stroke: var(--hand-ink);
+  stroke-width: 2.2px;
+  stroke-linecap: round;
+  will-change: stroke-dashoffset;
+}
+
+.hand-note .hand-rule--x {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10px;
+}
+
+.hand-note .hand-rule--y {
+  position: absolute;
+  top: 0;
+  left: 5px;
+  width: 10px;
+  height: 100%;
+}
+
+/* Responsive Overrides (Mobile / Tablet fluid scaling) */
+@media (max-width: 1024px) {
+  .giant-pinning {
+    --giant-size: clamp(68px, 22vw, 180px);
+    margin-top: -30px;
+    overflow: hidden;
+  }
+
+  .giant-pinning .top-title {
+    --gy: 22vw;
+  }
+
+  .giant-pinning .top-title .h2 {
+    font-size: clamp(28px, 6vw, 56px);
+  }
+
+  .giant-pinning .top-title .subhead {
+    font-size: clamp(11px, 2.8vw, 15px);
+  }
+
+  .hand-note {
+    --hand-w: clamp(160px, 26vw, 300px);
+  }
+
+  .hand-note .hand-ink {
+    font-size: clamp(14px, 1.8vw, 20px);
+  }
+
+  .diag-down-arrow,
+  .diag-up-arrow {
+    width: clamp(90px, 26vw, 260px);
+    height: clamp(60px, 17vw, 173px);
+  }
+}
+
+@media (max-width: 768px) {
+  .giant-pinning {
+    --giant-size: clamp(60px, 24vw, 130px);
+  }
+
+  .giant-pinning .top-title .h2 {
+    font-size: clamp(24px, 6vw, 42px);
+  }
+
+  .hand-note {
+    --hand-w: clamp(150px, 32vw, 220px);
+  }
+
+  .hand-note .hand-ink {
+    font-size: clamp(13px, 3.2vw, 17px);
+  }
+}

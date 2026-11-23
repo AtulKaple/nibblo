@@ -1,0 +1,40 @@
+@import "tailwindcss";
+@import "../public/wp-content/themes/emg-nibblo/assets/css/main.css";
+
+@theme {
+  --color-nibblo-rouge: #622b14;
+  --color-nibblo-creme: #efefe3;
+  --color-nibblo-fond: #edeae0;
+  --color-nibblo-jaune: #feb914;
+  --color-nibblo-orange: #fe8826;
+  --color-nibblo-chocolate: #3a1700;
+  --color-nibblo-dark: #221008;
+  --color-nibblo-brown: #5c2416;
+  --color-nibblo-amber: #feb914;
+
+  --font-archivo: "Archivo", "Arial Black", system-ui, sans-serif;
+  --font-barlow: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-sans: "Source Sans 3", Arial, system-ui, sans-serif;
+}
+
+/* Tailwind Utility Classes & Custom Micro-Animations */
+@layer utilities {
+  .shadow-nibblo-float {
+    box-shadow: 0 12px 32px rgba(58, 23, 0, 0.35);
+  }
+}
+
+.intro__pincho,
+.intro__crunch {
+  width: clamp(64px, 7vw, 96px) !important;
+  height: clamp(64px, 7vw, 96px) !important;
+  display: block;
+  margin: 0 auto;
+}
+
+.intro__pincho svg,
+.intro__crunch svg {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
